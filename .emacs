@@ -52,3 +52,16 @@
 
 (require 'org-tempo)
 (put 'upcase-region 'disabled nil)
+
+
+;; active Org-babel languages 需要先安装graphviz
+(org-babel-do-load-languages
+    'org-babel-load-languages
+    '(;; other Babel languages
+        (plantuml . t)))
+
+(setq org-plantuml-jar-path
+    (expand-file-name "~/emacs_config/plantuml.jar"))
+
+;; 让bable直接执行，不需要提示
+(setq org-confirm-babel-evaluate nil)
