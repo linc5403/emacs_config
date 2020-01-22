@@ -24,6 +24,8 @@
 (define-key global-map "\C-cb" 'org-switchb)
 (setq org-log-done t)
 
+;;(setq org-latex-image-default-width "")
+
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
@@ -65,3 +67,5 @@
 
 ;; 让bable直接执行，不需要提示
 (setq org-confirm-babel-evaluate nil)
+
+
