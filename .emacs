@@ -69,3 +69,8 @@
 (setq org-confirm-babel-evaluate nil)
 
 
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+(provide 'key-bindings)
+
+;; fontify code in code blocks
+(setq org-src-fontify-natively t)
