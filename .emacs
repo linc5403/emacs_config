@@ -1,5 +1,7 @@
-(setq package-archives '(("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(setq package-archives '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+                         ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")
+			 ("org"   . "http://mirrors.cloud.tencent.com/elpa/org/")
+			 ))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -9,13 +11,14 @@
 
 (require 'package)
 
+
 ; Do not display the splash screen
 (setq inhibit-startup-screen t)
 
 ; 打开禁用的命令 (put '       command      'disabled nil)
 ; 将命令禁用 (put '      command      'disabled t)
-(add-to-list 'load-path "~/Downloads/org-9.3.1/lisp")
-(add-to-list 'load-path "~/Downloads/org-9.3.1/contrib/lisp" t)
+; (add-to-list 'load-path "~/Downloads/org-9.3.1/lisp")
+; (add-to-list 'load-path "~/Downloads/org-9.3.1/contrib/lisp" t)
 
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
@@ -34,7 +37,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (## auto-complete))))
+ '(package-selected-packages
+   (quote
+    (org-plus-contrib org-ac roguel-ike ## auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -52,9 +57,8 @@
       '("xelatex -interaction nonstopmode %b"
     "xelatex -interaction nonstopmode %b"))
 
-(require 'org-tempo)
-(put 'upcase-region 'disabled nil)
-
+;; 让代码能够执行。。。比如plantuml
+(add-to-list 'org-modules 'org-tempo)
 
 ;; active Org-babel languages 需要先安装graphviz
 (org-babel-do-load-languages
@@ -68,9 +72,8 @@
 ;; 让bable直接执行，不需要提示
 (setq org-confirm-babel-evaluate nil)
 
-
-(global-set-key (kbd "M-SPC") 'set-mark-command)
-(provide 'key-bindings)
+;; (global-set-key (kbd "M-SPC") 'set-mark-command)
+;; (provide 'key-bindings)
 
 ;; fontify code in code blocks
 (setq org-src-fontify-natively t)
