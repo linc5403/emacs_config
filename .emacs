@@ -1,7 +1,15 @@
-(setq package-archives '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
-                         ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")
-			 ("org"   . "http://mirrors.cloud.tencent.com/elpa/org/")
-			 ))
+;; 设置国内源及权重，使得stable权重更高
+(setq package-archives
+      '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+        ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")
+        ("melpa-stable" . "http://mirrors.cloud.tencent.com/elpa/melpa-stable/")
+	("org"   . "http://mirrors.cloud.tencent.com/elpa/org/"))
+      package-archive-priorities
+      '(("melpa-stable" . 10)
+	("gnu" . 8)
+	("org" . 5)
+	("melpa". 0))
+      )
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -12,13 +20,26 @@
 (require 'package)
 
 
+;; for linum-mode startup
+(global-linum-mode t)
+
+
+;; for visual-line-mode startup
+(global-visual-line-mode t)
+
+
+;; for auto-complete-mode startup
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+(defun auto-complete-mode-maybe ()
+  "No maybe for you. Only AC!"
+  (unless (minibufferp (current-buffer))
+    (auto-complete-mode 1)))
+
 ; Do not display the splash screen
 (setq inhibit-startup-screen t)
 
-; 打开禁用的命令 (put '       command      'disabled nil)
-; 将命令禁用 (put '      command      'disabled t)
-; (add-to-list 'load-path "~/Downloads/org-9.3.1/lisp")
-; (add-to-list 'load-path "~/Downloads/org-9.3.1/contrib/lisp" t)
 
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
@@ -26,8 +47,6 @@
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-cb" 'org-switchb)
 (setq org-log-done t)
-
-;;(setq org-latex-image-default-width "")
 
 (eval-after-load "org"
   '(require 'ox-md nil t))
@@ -39,15 +58,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-plus-contrib org-ac roguel-ike ## auto-complete))))
+    (magit cnfonts markdown-preview-mode jedi scala-mode org org-plus-contrib org-ac roguel-ike ## auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
-
-;;(setq-default TeX-engine 'xelatex)
+ '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 143 :width normal)))))
 
 
 ;;使用XeLaTeX编译
@@ -77,3 +94,9 @@
 
 ;; fontify code in code blocks
 (setq org-src-fontify-natively t)
+
+
+
+;; 切换成大写的那个东西
+(put 'upcase-region 'disabled nil)
+
