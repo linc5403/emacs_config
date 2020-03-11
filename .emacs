@@ -68,9 +68,22 @@
 ;; 让bable直接执行，不需要提示
 (setq org-confirm-babel-evaluate nil)
 
+(require 'json)
+(cond
+ (file
+  (org-babel-with-temp-filebuffer file
+    (goto-char (point-min))
+    (json-read)))
+ (url
+  (require 'w3m)
+  (with-temp-buffer
+    (w3m-retrieve url)
+    (goto-char (point-min))
+    (json-read))))
 
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 (provide 'key-bindings)
 
 ;; fontify code in code blocks
 (setq org-src-fontify-natively t)
+
