@@ -20,6 +20,8 @@
 (require 'package)
 
 
+
+
 ;; for linum-mode startup
 (global-linum-mode t)
 
@@ -56,15 +58,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/note/lisp/lisp.org" "~/note/meta.org" "~/agenda/plan.org" "~/note/linux/docker/docker.org" "~/note/idea/idea.org" "~/agenda/learning.org" "~/note/linux/git/git.org" "~/docs/emacs/full-emacs.org" "~/agenda/work.org")))
  '(package-selected-packages
    (quote
-    (magit cnfonts markdown-preview-mode jedi scala-mode org org-plus-contrib org-ac roguel-ike ## auto-complete))))
+    (flycheck-plantuml htmlize json-mode yaml-mode plantuml-mode magit cnfonts markdown-preview-mode jedi scala-mode org org-plus-contrib org-ac roguel-ike ## auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 143 :width normal)))))
+ '(default ((t (:family "Monofur Nerd Font" :foundry "unci" :slant normal :weight normal :height 151 :width normal)))))
 
 
 ;;使用XeLaTeX编译
@@ -99,4 +104,11 @@
 
 ;; 切换成大写的那个东西
 (put 'upcase-region 'disabled nil)
+
+;; 备份文件统一放，不放到当前目录下
+(setq backup-directory-alist (quote (("." . "~/.emacs.d/backups/"))))
+
+;; lisp
+(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
 
