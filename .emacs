@@ -19,6 +19,8 @@
 
 (require 'package)
 
+;; 备份文件统一放，不放到当前目录下
+(setq backup-directory-alist (quote (("." . "~/.emacs.d/backups/"))))
 
 ;; for linum-mode startup
 (global-linum-mode t)
@@ -94,7 +96,6 @@
 
 ;; fontify code in code blocks
 (setq org-src-fontify-natively t)
-
 
 
 ;; 切换成大写的那个东西
