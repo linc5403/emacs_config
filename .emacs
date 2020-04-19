@@ -60,7 +60,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/note/lisp/lisp.org" "~/note/meta.org" "~/agenda/plan.org" "~/note/linux/docker/docker.org" "~/note/idea/idea.org" "~/agenda/learning.org" "~/note/linux/git/git.org" "~/docs/emacs/full-emacs.org" "~/agenda/work.org")))
+    ("~/banyuan/work/quality.org" "~/note/lisp/lisp.org" "~/note/meta.org" "~/agenda/plan.org" "~/note/linux/docker/docker.org" "~/note/idea/idea.org" "~/agenda/learning.org" "~/note/linux/git/git.org" "~/docs/emacs/full-emacs.org" "~/agenda/work.org")))
  '(package-selected-packages
    (quote
     (flycheck-plantuml htmlize json-mode yaml-mode plantuml-mode magit cnfonts markdown-preview-mode jedi scala-mode org org-plus-contrib org-ac roguel-ike ## auto-complete))))
@@ -94,8 +94,6 @@
 ;; 让bable直接执行，不需要提示
 (setq org-confirm-babel-evaluate nil)
 
-;; (global-set-key (kbd "M-SPC") 'set-mark-command)
-;; (provide 'key-bindings)
 
 ;; fontify code in code blocks
 (setq org-src-fontify-natively t)
@@ -112,3 +110,8 @@
 (load (expand-file-name "~/.quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
 
+;; c offset
+(setq-default c-basic-offset 4)
+
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)

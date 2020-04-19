@@ -1,2 +1,4 @@
-plantuml.jar
+*.zip
+*.bak
+*.jar
 .emacs~
