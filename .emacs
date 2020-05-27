@@ -60,7 +60,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/banyuan/work/quality.org" "~/note/lisp/lisp.org" "~/note/meta.org" "~/agenda/plan.org" "~/note/linux/docker/docker.org" "~/note/idea/idea.org" "~/agenda/learning.org" "~/note/linux/git/git.org" "~/docs/emacs/full-emacs.org" "~/agenda/work.org")))
+    ("~/toc.org" "~/docs/Spring-Framework/ThinkInSpring.org" "~/banyuan/work/quality.org" "~/note/lisp/lisp.org" "~/note/meta.org" "~/agenda/plan.org" "~/note/linux/docker/docker.org" "~/note/idea/idea.org" "~/agenda/learning.org" "~/note/linux/git/git.org" "~/docs/emacs/full-emacs.org" "~/agenda/work.org")))
  '(package-selected-packages
    (quote
     (flycheck-plantuml htmlize json-mode yaml-mode plantuml-mode magit cnfonts markdown-preview-mode jedi scala-mode org org-plus-contrib org-ac roguel-ike ## auto-complete))))
@@ -90,6 +90,9 @@
 
 (setq org-plantuml-jar-path
     (expand-file-name "~/emacs_config/plantuml.jar"))
+
+;; 使用jar包而不直接链接plantuml的server
+(setq plantuml-default-exec-mode 'jar)
 
 ;; 让bable直接执行，不需要提示
 (setq org-confirm-babel-evaluate nil)
